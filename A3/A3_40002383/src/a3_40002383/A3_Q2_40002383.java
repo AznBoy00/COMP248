@@ -80,8 +80,7 @@ public class A3_Q2_40002383 {
                 balance += getSeatCost(seatLetter);
                 
                 //Will display 1 decimal number.
-                System.out.printf("Your seat is reserved. Your balance is %.01f", balance);
-                System.out.println();
+                System.out.printf("Your seat is reserved. Your balance is %.2f\n", balance);
                 showSeats(seats);
             }
             System.out.println("Reservation complete! Please proceed to payment");
