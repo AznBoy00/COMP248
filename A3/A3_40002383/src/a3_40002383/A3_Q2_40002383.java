@@ -1,15 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//------------------------------------
+// Assignment 3 - Question 2
+// Written by: Kevin Lin - 4002383
+// For COMP 248 Section Q - Fall 2016   
+//------------------------------------
+
 package a3_40002383;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Kevin
+/*
+
+    This program prompts the user to input the number of ticket(s) he/she wants to book.
+    The user will then input the seat values depending on the amount of tickets he/she wants to book and will inform the user about the cost of the seats.
+    The process will repeat when all the seats will be booked or if the user decides not to make more booking(s).
+
  */
 public class A3_Q2_40002383 {
     

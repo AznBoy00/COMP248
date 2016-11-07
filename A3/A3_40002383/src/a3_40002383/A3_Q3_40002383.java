@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//------------------------------------
+// Assignment 3 - Question 3
+// Written by: Kevin Lin - 4002383
+// For COMP 248 Section Q - Fall 2016   
+//------------------------------------
+
 package a3_40002383;
 
-/**
- *
- * @author Kevin
+/*
+
+    This program will display the values of the instructions below by using methods from another class. (Scale.java)
+
  */
+
 public class A3_Q3_40002383 {
     public static void main(String[] args) {
         //Object declaration

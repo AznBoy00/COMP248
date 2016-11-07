@@ -1,23 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//------------------------------------
+// Assignment 3 - Question 1
+// Written by: Kevin Lin - 4002383
+// For COMP 248 Section Q - Fall 2016   
+//------------------------------------
+
 package a3_40002383;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Kevin
+/*
+
+    This program will ask the user to input sets of nouns and adjectives. (min 3 per word types)
+    The program will shuffle the inputs and then output 3-line poems without repeating any value.
+    The user is then prompted if he/she wants to continue to display for poems of terminate the program.
+
  */
+
 public class A3_Q1_40002383 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
 
         //Variable Declaration
         Scanner input = new Scanner(System.in);
@@ -33,10 +34,12 @@ public class A3_Q1_40002383 {
         String temp;
         int randomNum;
 
+        // Welcome message.
         System.out.println("\t----------------------------------------------");
         System.out.println("\tDo you want to write a poem? Lets get started!");
         System.out.println("\t----------------------------------------------");
-
+        
+        // Asks user for inputs (nouns & adjectives) up to the number of the numbers of inputs instructed (min 3 each)
         System.out.println("How many nouns ? min 3");
         nounNum = input.nextInt();
         while (nounNum < 3) {
@@ -62,13 +65,26 @@ public class A3_Q1_40002383 {
         for (int i = 0; i < adjNum; i++) {
             adj[i] = input.next();
         }
-        //getting true length
+        
+        // Get length of nouns/adjectives in order to determine how many times we can run poems of 3 lines without repeating any value.
+        
         if (nouns.length > adj.length) {
             maxRunCount = (adj.length) / 3;
         } else if (adj.length >= nouns.length) {
             maxRunCount = (nouns.length) / 3;
         }
-        //shuffling arrays
+        
+        /*
+        
+            Shuffling nouns and adjectives array by:
+                -Taking a random noun/adjective.
+                -Adding it to a temporary variable.
+                -Change the value of i by the random value.
+                -Finally change i by using the temp value.
+            This method insures that no values will be duplicated and will be shuffled as instructed.
+        
+        */
+        
         for (int i = 0; i < nouns.length; i++) {
             randomNum = (int) (Math.random() * nouns.length);
             temp = nouns[i];
@@ -82,6 +98,7 @@ public class A3_Q1_40002383 {
             adj[randomNum] = temp;
         }
 
+        // Executes poem. Can repeat as many time as the value of maxRunCount. When maxRunCount is reached, shuffling will occur in the loop.
         do {
             System.out.println("\t------------------------------");
             System.out.println("\t\tHere is my Java POEM!!");
@@ -99,6 +116,7 @@ public class A3_Q1_40002383 {
             System.out.print("\n\nAnother Poem (y/n)? ");
             repeat = (input.next().charAt(0));
             runCount++;
+            
             //shuffling arrays
             if (runCount == maxRunCount) {
                 runCount = 0;
@@ -116,6 +134,6 @@ public class A3_Q1_40002383 {
                     adj[randomNum] = temp;
                 }
             }
-        } while (repeat == 'y');
+        } while (repeat == 'y'); // Asks user if he/she wants to repeat to display another poem.
     }
 }
