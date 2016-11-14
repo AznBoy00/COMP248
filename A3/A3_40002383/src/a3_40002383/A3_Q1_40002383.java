@@ -66,7 +66,10 @@ public class A3_Q1_40002383 {
             adj[i] = input.next();
         }
         
-        // Get length of nouns/adjectives in order to determine how many times we can run poems of 3 lines without repeating any value.
+        /* 
+            Get length of nouns/adjectives in order to determine how many times we can run poems of 3 lines without repeating any value.
+            Calculated by dividing the numbers of nouns/adjectives by 3.
+        */
         
         if (nouns.length > adj.length) {
             maxRunCount = (adj.length) / 3;
