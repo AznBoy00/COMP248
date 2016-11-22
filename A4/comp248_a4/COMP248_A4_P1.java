@@ -1,3 +1,8 @@
+
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Kevin
  */
-public class COMP248_A4_Q1 {
+public class COMP248_A4_P1 {
 
     /**
      * @param args the command line arguments
@@ -23,10 +28,14 @@ public class COMP248_A4_Q1 {
         String[] option_list = {"Water", "Soda pop", "Beer"};
         Menu drinkMenu = new Menu(drink_options);
         Menu full_menu = new Menu(option_list);//no
+        Menu m = new Menu();
         
+        //TEST1
         //drinkMenu.setTopPrompt(null);
         //drinkMenu.setBottomPrompt(null);
         //System.out.println(drinkMenu);
+        
+        //PART1
         /*
         full_menu.setTopMessage("Quench your thirst with our fine drinks!");
         full_menu.setBottomMessage("Time to obey your thirst!");
@@ -36,7 +45,8 @@ public class COMP248_A4_Q1 {
         int choice = full_menu.readOptionNumber();
         System.out.println("You entered " + choice );*/
         
-        // create an empty menu
+        //PART2
+        /*
         Menu m = new Menu(); // no messages, no prompts, no options
         // read an integer
         int number1 = m.readOptionNumber();
@@ -47,7 +57,31 @@ public class COMP248_A4_Q1 {
         // read an integer
         int number2 = m.readOptionNumber();
         System.out.println("You entered " + number2);
+        System.out.println("----------------------");*/
+        
+        //PART3
+        
+        // remove bottom prompt
+        /*m.setBottomPrompt(null);
+        m.setBottomMessage("Enter an integer for bottom message: ");
+        int number3 = m.readOptionNumber();
+        System.out.println("You entered " + number3);
         System.out.println("----------------------");
+        */
+        
+        //PART4
+        /*
+        // introduce top message
+        m.setTopMessage("*************************************************");
+        // introduce top prompt
+        m.setTopPrompt("An integer is even if it is twice another integer");
+        // reset bottom message
+        m.setBottomMessage("*************************************************");
+        // intro bottom prompt
+        m.setBottomPrompt("Enter an even integer: ");
+        // read an integer
+        int number4 = m.readOptionNumber();
+        System.out.println("You entered " + number4);*/
         
     }
     

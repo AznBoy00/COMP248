@@ -13,18 +13,19 @@ import java.util.*;
  */
 public class Menu {
     
-    private String options[];
+    
     private String topMessage;
-    private String bottomMessage;
     private String topPrompt;
+    private String options[];
+    private String bottomMessage;
     private String bottomPrompt;
     
     public Menu () {
-        this.setBottomMessage(null);
-        this.setBottomPrompt(null);
-        this.setOptions(null);
-        this.setTopMessage(null);
-        this.setTopPrompt(null);
+        this.topMessage = null;
+        this.topPrompt = null;
+        this.options = null;
+        this.bottomMessage = null;
+        this.bottomPrompt = null;
     }
     
     public Menu (String[] options) {
