@@ -87,6 +87,7 @@ public class Scale {
     }
 
     // @Override method used in order to compare an object with another one in order to execute the proper checks instructed by the assignment question.
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
