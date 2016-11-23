@@ -51,7 +51,7 @@ public class Menu {
         }
     }
     
-    public int readOptionNumber() {
+    public int getOptionNumber() {
         Scanner i = new Scanner(System.in);
         int input;
         do {

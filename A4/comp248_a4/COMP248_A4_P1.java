@@ -42,20 +42,20 @@ public class COMP248_A4_P1 {
         full_menu.setTopPrompt("Choose your thirst crusher:");
         full_menu.setBottomPrompt("Enter a drink number: ");
         // display the menu and then read an option number
-        int choice = full_menu.readOptionNumber();
+        int choice = full_menu.getOptionNumber();
         System.out.println("You entered " + choice );*/
         
         //PART2
         /*
         Menu m = new Menu(); // no messages, no prompts, no options
         // read an integer
-        int number1 = m.readOptionNumber();
+        int number1 = m.getOptionNumber();
         System.out.println("You entered " + number1);
         System.out.println("----------------------");
         // introduce bottom prompt
         m.setBottomPrompt("Enter an integer for bottom prompt: ");
         // read an integer
-        int number2 = m.readOptionNumber();
+        int number2 = m.getOptionNumber();
         System.out.println("You entered " + number2);
         System.out.println("----------------------");*/
         
@@ -64,7 +64,7 @@ public class COMP248_A4_P1 {
         // remove bottom prompt
         /*m.setBottomPrompt(null);
         m.setBottomMessage("Enter an integer for bottom message: ");
-        int number3 = m.readOptionNumber();
+        int number3 = m.getOptionNumber();
         System.out.println("You entered " + number3);
         System.out.println("----------------------");
         */
@@ -80,7 +80,7 @@ public class COMP248_A4_P1 {
         // intro bottom prompt
         m.setBottomPrompt("Enter an even integer: ");
         // read an integer
-        int number4 = m.readOptionNumber();
+        int number4 = m.getOptionNumber();
         System.out.println("You entered " + number4);*/
         
     }

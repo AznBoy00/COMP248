@@ -36,10 +36,10 @@ public class IceCreamOrder {
     }
 
     public IceCreamOrder() {
-        menu();
+        showMenu();
     }
     
-    private void menu() {
+    public void showMenu() {
         Scanner i = new Scanner(System.in);
         int selection;
         
@@ -48,12 +48,13 @@ public class IceCreamOrder {
         System.out.println("\t(1) Avocado");
         System.out.println("\t(2) Banana");
         System.out.println("\t(3) Chocolate");
-        System.out.println("\t(4) Hazelnut");
-        System.out.println("\t(5) Lemon");
-        System.out.println("\t(6) Mango");
-        System.out.println("\t(7) Mocha");
-        System.out.println("\t(8) Vanilla");
-        System.out.println("\t(9) Exit this menu");
+        System.out.println("\t(4) Coffee");
+        System.out.println("\t(5) Hazelnut");
+        System.out.println("\t(6) Lemon");
+        System.out.println("\t(7) Mango");
+        System.out.println("\t(8) Mocha");
+        System.out.println("\t(9) Vanilla");
+        //System.out.println("\t(10) Exit this menu");
         System.out.print("?-> Enter an option number : ");
         selection = i.nextInt();
         
@@ -68,27 +69,30 @@ public class IceCreamOrder {
                 this.flavor = "Chocolate";
                 break;
             case 4:
-                this.flavor = "Hazelnut";
+                this.flavor = "Coffee";
                 break;
             case 5:
-                this.flavor = "Lemon";
+                this.flavor = "Hazelnut";
                 break;
             case 6:
-                this.flavor = "Mango";
+                this.flavor = "Lemon";
                 break;
             case 7:
-                this.flavor = "Mocha";
+                this.flavor = "Mango";
                 break;
             case 8:
-                this.flavor = "Vanilla";
+                this.flavor = "Mocha";
                 break;
             case 9:
+                this.flavor = "Vanilla";
+                break;
+            /*case 10:
                 this.flavor = null;
                 this.vessel = null;
                 this.amount = null;
                 this.unitPrice = 0;
                 this.quantity = 0;
-                return;
+                return;*/
         }
         
         System.out.println("Step B: Select a vessel for your ice cream :");
@@ -112,9 +116,7 @@ public class IceCreamOrder {
                 this.unitPrice = 4.25;
                 break;
         }
-        
-        
-        
+
         System.out.println("Step C: How much ice cream ?");
         System.out.println("\t(1) Single Scoop");
         System.out.println("\t(2) Double Scoop");
@@ -125,15 +127,14 @@ public class IceCreamOrder {
         switch(selection) {
             case 1:
                 this.amount = "Single Scoop";
-                this.unitPrice += 1;
                 break;
             case 2:
                 this.amount = "Double Scoop";
-                this.unitPrice += 2;
+                this.unitPrice += 1;
                 break;
             case 3:
                 this.amount = "Triple Scoop";
-                this.unitPrice += 3;
+                this.unitPrice += 2;
                 break;
         }
         
@@ -147,6 +148,7 @@ public class IceCreamOrder {
         System.out.println("\t(7) Seven");
         System.out.println("\t(8) Eight");
         System.out.println("\t(9) Nine");
+        System.out.println("\t(10) Ten");
         System.out.print("?-> Enter an option number: ");
         selection = i.nextInt();
         
@@ -178,6 +180,9 @@ public class IceCreamOrder {
             case 9:
                 this.quantity = 9;
                 break;
+            case 10:
+                this.quantity = 10;
+                break;
         }
     }
     
@@ -187,7 +192,7 @@ public class IceCreamOrder {
 
     @Override
     public String toString() {
-        return quantity + "orders of " + amount + " of " + flavor + " ice cream in a " + vessel + " for $" + price() + " = " + quantity + " x " + unitPrice;       
+        return " " + quantity + " orders of " + amount + " of " + flavor + " ice cream in a " + vessel + " for $" + price() + " = " + quantity + " x " + unitPrice;       
     }
 
     public String getFlavor() {

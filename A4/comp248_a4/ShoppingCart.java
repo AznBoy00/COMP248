@@ -71,7 +71,7 @@ public class ShoppingCart {
     }
     
     public IceCreamOrder get(int position) {
-        if (position < count) {
+        if (position <= count) {
             position -= 1;
             return this.order[position];
         } else {
