@@ -25,7 +25,6 @@ public class IceCreamStore {
     public void placeOrder(){
         IceCreamOrder order = new IceCreamOrder();
         cart.add(order);
-        run();
     }
     
     public void deleteOrder(){        
@@ -43,8 +42,7 @@ public class IceCreamStore {
             System.out.println("");
         } else {
             System.out.println("\nAn error has occured\n.");
-        }
-        run();        
+        }       
     }
     
     public double computeTotalPrice() {
@@ -60,7 +58,6 @@ public class IceCreamStore {
         System.out.println("------------------------------------=");
         System.out.printf("Total price of all your orders in the cart : $%.2f", totalPrice);
         System.out.println("\n------------------------------------=\n");
-        run();
     }
     
     public void reviewOrders() {
@@ -74,10 +71,9 @@ public class IceCreamStore {
         reviewOrders();
         printTotalPrice();
         //Empty Cart
-        for (int j = 0; j < cart.getMAX_ORDERS(); j++) {
+        for (int j = 0; j < cart.getCount(); j++) {
             cart.remove(j+1);
         }
-        run();
     }
     
     private void showMenu() {
@@ -100,8 +96,7 @@ public class IceCreamStore {
             System.out.println("Cannot place orders ! what would you like to do?");
             showMenu();
             System.out.println("Please select option 2, 3, 4, 5, or 6");
-            System.out.print("?-> Enter an option number : ");
-            
+            System.out.print("?-> Enter an option number : "); 
         } else {
             System.out.println("Your shopping cart contains " + cart.getCount() + " ice cream order(s)");
             System.out.println("What would you like to do?");
@@ -112,12 +107,11 @@ public class IceCreamStore {
         
         switch (selection) {
             case 1:
-                if (cart.isFull()) {
-                    System.out.println("");
-                    run();
-                    break;
+                if (!cart.isFull()) { //Was working. Need to Test.
+                    placeOrder();
                 }
-                placeOrder();
+                System.out.println("");
+                run();
                 break;
             case 2:
                 if (!cart.isEmpty()) {
@@ -146,7 +140,7 @@ public class IceCreamStore {
                 run();
                 break;
             case 6:
-                System.out.println("\n\t Cheers!");
+                System.out.println("\nCheers!");
                 System.exit(0);
                 break;
             default:

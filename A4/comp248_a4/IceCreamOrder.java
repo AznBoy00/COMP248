@@ -106,11 +106,11 @@ public class IceCreamOrder {
         switch (selection) {
             case 1:
                 this.vessel = "Cone";
-                this.unitPrice = 2.99;
+                this.unitPrice = 3.49;
                 break;
             case 2:
                 this.vessel = "Cup";
-                this.unitPrice = 3.49;
+                this.unitPrice = 2.99;
                 break;
             case 3:
                 this.vessel = "Sundae";
