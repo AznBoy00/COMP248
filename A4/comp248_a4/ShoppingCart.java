@@ -45,7 +45,7 @@ public class ShoppingCart {
     public String toString() {
         String s = "";
         for (int i = 0; i < count; i++) {
-            s += "(" + (i+1) + ")" + order[i].toString() + "\n";
+            s += "\n\t(" + (i+1) + ")" + order[i].toString();
         }
         return s;
     }

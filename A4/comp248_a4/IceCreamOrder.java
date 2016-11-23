@@ -43,7 +43,7 @@ public class IceCreamOrder {
         Scanner i = new Scanner(System.in);
         int selection;
         
-        System.out.println("Placing an order is as easy as ABC , and D.");
+        System.out.println("\nPlacing an order is as easy as ABC , and D.");
         System.out.println("Step A: Select your favorite flavour");
         System.out.println("\t(1) Avocado");
         System.out.println("\t(2) Banana");
@@ -86,16 +86,17 @@ public class IceCreamOrder {
             case 9:
                 this.flavor = "Vanilla";
                 break;
-            /*case 10:
+            /*default:
                 this.flavor = null;
                 this.vessel = null;
                 this.amount = null;
                 this.unitPrice = 0;
                 this.quantity = 0;
+                System.out.println("Input error, returning to main menu.");
                 return;*/
         }
         
-        System.out.println("Step B: Select a vessel for your ice cream :");
+        System.out.println("\nStep B: Select a vessel for your ice cream :");
         System.out.println("\t(1) Cone");
         System.out.println("\t(2) Cup");
         System.out.println("\t(3) Sundae");
@@ -117,7 +118,7 @@ public class IceCreamOrder {
                 break;
         }
 
-        System.out.println("Step C: How much ice cream ?");
+        System.out.println("\nStep C: How much ice cream ?");
         System.out.println("\t(1) Single Scoop");
         System.out.println("\t(2) Double Scoop");
         System.out.println("\t(3) Triple Scoop");
@@ -138,7 +139,7 @@ public class IceCreamOrder {
                 break;
         }
         
-        System.out.println("Step D: how many orders of your current selection ?");
+        System.out.println("\nStep D: how many orders of your current selection ?");
         System.out.println("\t(1) One");
         System.out.println("\t(2) Two");
         System.out.println("\t(3) Three");
@@ -151,6 +152,7 @@ public class IceCreamOrder {
         System.out.println("\t(10) Ten");
         System.out.print("?-> Enter an option number: ");
         selection = i.nextInt();
+        System.out.println("");
         
         switch (selection) {
             case 1:

@@ -15,63 +15,68 @@ public class IceCreamStore {
     //private IceCreamOrder order;
     private ShoppingCart cart;
     private int selection;
-    double totalPrice = 0.0;
+    double totalPrice;
     Scanner i = new Scanner(System.in);
     
     public IceCreamStore(){
-        //order = new IceCreamOrder();
         cart = new ShoppingCart();
     }
     
     public void placeOrder(){
-        if (!cart.isFull()) {
-            IceCreamOrder order = new IceCreamOrder();
-            cart.add(order);
-        } else {
-            System.out.println("Cart full, cannot place order.");
-        }
+        IceCreamOrder order = new IceCreamOrder();
+        cart.add(order);
         run();
     }
     
     public void deleteOrder(){        
-        System.out.println("You have selected to remove an order from your cart");
+        System.out.println("\nYou have selected to remove an order from your cart");
         System.out.println("What would you like to do?");
         System.out.println(cart.toString());
-        System.out.println("("+ (cart.getCount()+1) +") Exit this menu");
+        System.out.println("\t("+ (cart.getCount()+1) +") Exit this menu");
         System.out.print("?-> Enter an option number : ");
         selection = i.nextInt();
         
         if (selection <= (cart.getCount())) {
             cart.remove(selection);
-            System.out.println("The order you selected was deleted");
+            System.out.println("\nThe order you selected was deleted\n");
+        } else if (selection == 4) {
+            System.out.println("");
         } else {
-            System.out.println("An error has occured.");
+            System.out.println("\nAn error has occured\n.");
         }
-        run();
+        run();        
     }
     
     public double computeTotalPrice() {
+        this.totalPrice = 0.0;
         for (int j = 0; j < cart.getCount(); j++) {
-            this.totalPrice += cart.get(j + 1).price();
+            totalPrice += cart.get(j + 1).price();
         }
         return totalPrice;
     }
     
     public void printTotalPrice() {
         computeTotalPrice();
-        System.out.println("\n------------------------------------=");
-        System.out.println("Total price of all your orders in the cart : " + totalPrice);
         System.out.println("------------------------------------=");
+        System.out.printf("Total price of all your orders in the cart : $%.2f", totalPrice);
+        System.out.println("\n------------------------------------=\n");
         run();
     }
     
     public void reviewOrders() {
-        System.out.println(cart.toString());
+        System.out.println("\nYour current selections of our scrumptious ice creams");
+        System.out.print("-----------------------------------------------------");
+        System.out.print(cart.toString());
+        System.out.print("\n-----------------------------------------------------\n");
     }
     
     public void checkout() {
         reviewOrders();
         printTotalPrice();
+        //Empty Cart
+        for (int j = 0; j < cart.getMAX_ORDERS(); j++) {
+            cart.remove(j+1);
+        }
         run();
     }
     
@@ -108,29 +113,45 @@ public class IceCreamStore {
         switch (selection) {
             case 1:
                 if (cart.isFull()) {
+                    System.out.println("");
                     run();
                     break;
                 }
                 placeOrder();
                 break;
             case 2:
-                deleteOrder();
+                if (!cart.isEmpty()) {
+                    deleteOrder();
+                }
+                run();
                 break;
             case 3:
-                printTotalPrice();
+                if (!cart.isEmpty()) {
+                    System.out.println("");
+                    printTotalPrice();
+                }
+                run();
                 break;
             case 4:
-                System.out.println("Your current selections of our scrumptious ice creams");
-                System.out.println("-----------------------------------------------------");
-                System.out.println(cart.toString());
-                System.out.println("-----------------------------------------------------");
+                if (!cart.isEmpty()) {
+                    reviewOrders();
+                    System.out.println("");
+                }
                 run();
                 break;
             case 5:
-                checkout();
+                if (!cart.isEmpty()) {
+                    checkout();
+                }
+                run();
                 break;
             case 6:
+                System.out.println("\n\t Cheers!");
                 System.exit(0);
+                break;
+            default:
+                System.out.println("");
+                run();
                 break;
         }
     }
