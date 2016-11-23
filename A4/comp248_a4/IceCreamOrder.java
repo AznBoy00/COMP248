@@ -12,12 +12,39 @@ import java.util.Scanner;
  * @author Kevin
  */
 public class IceCreamOrder {
-    
+    //Variable initialization
     private String flavor;
     private String vessel;
     private String amount;
     private double unitPrice;
     private int quantity;
+    
+    //Variable for the Scanner.
+    private int selection;
+    
+    /*
+        Ice Cream Price Formula from the Assignment:
+            Single Scoop for Cone, Cup, Sundae start at $3.49, $2.99, $4.25 respectively.
+            Price increases by $1 and $2 for an extra scoop or an extra 2 scoop.
+        Users can change the flavors, prices and increments below.
+    */
+    //Flavor Options
+    private String[] flavorName = {"Avocado", "Banana", "Chocolate", "Coffee", "Hazelnut", "Lemon", "Mango", "Mocha", "Vanilla"};
+    //Vessel Options
+    private String[] vesselName = {"Cone", "Cup", "Sundae"};
+    private double[] vesselPrice = {3.49, 2.99, 4.25};
+    //Scoop Options
+    private String[] scoopAmount = {"Single Scoop", "Double Scoop", "Triple Scoop"};
+    private double[] priceIncrement = {0.0, 1.0, 2.0};
+    //Quantity Options [Do not touch unless you know what you are doing]
+    private String[] quantityName = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+    
+    //Constructor Initialization
+    Scanner i = new Scanner(System.in);
+    private Menu flavorMenu = new Menu(flavorName);
+    private Menu vesselMenu = new Menu(vesselName);
+    private Menu scoopMenu = new Menu(scoopAmount);
+    private Menu quantityMenu = new Menu(quantityName); 
 
     public IceCreamOrder(String flavor, String vessel, String amount, double unitPrice, int quantity) {
         this.flavor = flavor;
@@ -39,120 +66,91 @@ public class IceCreamOrder {
         showMenu();
     }
     
-    public void showMenu() {
-        Scanner i = new Scanner(System.in);
-        int selection;
-        
-        System.out.println("\nPlacing an order is as easy as ABC , and D.");
-        System.out.println("Step A: Select your favorite flavour");
-        System.out.println("\t(1) Avocado");
-        System.out.println("\t(2) Banana");
-        System.out.println("\t(3) Chocolate");
-        System.out.println("\t(4) Coffee");
-        System.out.println("\t(5) Hazelnut");
-        System.out.println("\t(6) Lemon");
-        System.out.println("\t(7) Mango");
-        System.out.println("\t(8) Mocha");
-        System.out.println("\t(9) Vanilla");
-        //System.out.println("\t(10) Exit this menu");
-        System.out.print("?-> Enter an option number : ");
-        selection = i.nextInt();
+    public void showMenu() { //Trying to link to arrays using =array[x]
+        flavorMenu.setTopMessage("\nPlacing an order is as easy as ABC, and D.");
+        flavorMenu.setTopPrompt("Step A: Select your favorite flavour");
+        do {
+            System.out.print(flavorMenu);
+            selection = i.nextInt();
+        } while (selection <1 || selection > 9);
         
         switch (selection) {
             case 1:
-                this.flavor = "Avocado";
+                this.flavor = flavorName[0];
                 break;
             case 2:
-                this.flavor = "Banana";
+                this.flavor = flavorName[1];
                 break;
             case 3:
-                this.flavor = "Chocolate";
+                this.flavor = flavorName[2];
                 break;
             case 4:
-                this.flavor = "Coffee";
+                this.flavor = flavorName[3];
                 break;
             case 5:
-                this.flavor = "Hazelnut";
+                this.flavor = flavorName[4];
                 break;
             case 6:
-                this.flavor = "Lemon";
+                this.flavor = flavorName[5];
                 break;
             case 7:
-                this.flavor = "Mango";
+                this.flavor = flavorName[6];
                 break;
             case 8:
-                this.flavor = "Mocha";
+                this.flavor = flavorName[7];
                 break;
             case 9:
-                this.flavor = "Vanilla";
-                break;
-            /*default:
-                this.flavor = null;
-                this.vessel = null;
-                this.amount = null;
-                this.unitPrice = 0;
-                this.quantity = 0;
-                System.out.println("Input error, returning to main menu.");
-                return;*/
-        }
-        
-        System.out.println("\nStep B: Select a vessel for your ice cream :");
-        System.out.println("\t(1) Cone");
-        System.out.println("\t(2) Cup");
-        System.out.println("\t(3) Sundae");
-        System.out.print("?-> Enter an option number: ");
-        selection = i.nextInt();
-        
-        switch (selection) {
-            case 1:
-                this.vessel = "Cone";
-                this.unitPrice = 3.49;
-                break;
-            case 2:
-                this.vessel = "Cup";
-                this.unitPrice = 2.99;
-                break;
-            case 3:
-                this.vessel = "Sundae";
-                this.unitPrice = 4.25;
+                this.flavor = flavorName[8];
                 break;
         }
 
-        System.out.println("\nStep C: How much ice cream ?");
-        System.out.println("\t(1) Single Scoop");
-        System.out.println("\t(2) Double Scoop");
-        System.out.println("\t(3) Triple Scoop");
-        System.out.print("?-> Enter an option number: ");
-        selection = i.nextInt();
+        vesselMenu.setBottomMessage("\nStep B: Select a vessel for your ice cream :");
+        do {
+            System.out.print(vesselMenu);
+            selection = i.nextInt();
+        } while (selection <1 || selection > 3);
         
-        switch(selection) {
+        switch (selection) {
             case 1:
-                this.amount = "Single Scoop";
+                this.vessel = vesselName[0];
+                this.unitPrice = vesselPrice[0];
                 break;
             case 2:
-                this.amount = "Double Scoop";
-                this.unitPrice += 1;
+                this.vessel = vesselName[1];
+                this.unitPrice = vesselPrice[1];
                 break;
             case 3:
-                this.amount = "Triple Scoop";
-                this.unitPrice += 2;
+                this.vessel = vesselName[2];
+                this.unitPrice = vesselPrice[2];
                 break;
         }
         
-        System.out.println("\nStep D: how many orders of your current selection ?");
-        System.out.println("\t(1) One");
-        System.out.println("\t(2) Two");
-        System.out.println("\t(3) Three");
-        System.out.println("\t(4) Four");
-        System.out.println("\t(5) Five");
-        System.out.println("\t(6) Six");
-        System.out.println("\t(7) Seven");
-        System.out.println("\t(8) Eight");
-        System.out.println("\t(9) Nine");
-        System.out.println("\t(10) Ten");
-        System.out.print("?-> Enter an option number: ");
-        selection = i.nextInt();
-        System.out.println("");
+        scoopMenu.setTopMessage("\nStep C: How much ice cream ?");
+        do {
+            System.out.print(scoopMenu);
+            selection = i.nextInt();
+        } while (selection <1 || selection > 3);
+        
+        switch(selection) {
+            case 1:
+                this.amount = scoopAmount[0];
+                this.unitPrice += priceIncrement[0];
+                break;
+            case 2:
+                this.amount = scoopAmount[1];
+                this.unitPrice += priceIncrement[1];
+                break;
+            case 3:
+                this.amount = scoopAmount[2];
+                this.unitPrice += priceIncrement[2];
+                break;
+        }
+        
+        quantityMenu.setTopMessage("\nStep D: how many orders of your current selection ?");
+        do {
+            System.out.print(quantityMenu);
+            selection = i.nextInt();
+        } while (selection <1 || selection > 10);
         
         switch (selection) {
             case 1:

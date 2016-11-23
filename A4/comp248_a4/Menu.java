@@ -12,8 +12,6 @@ import java.util.*;
  * @author Kevin
  */
 public class Menu {
-    
-    
     private String topMessage;
     private String topPrompt;
     private String options[];
@@ -31,7 +29,7 @@ public class Menu {
     public Menu (String[] options) {
         this.options = options;
         this.setTopPrompt("Choose an option:");
-        this.setBottomPrompt("?-> Enter an option number:");
+        this.setBottomPrompt("Enter an option number: ");
         this.toString();
     }
     

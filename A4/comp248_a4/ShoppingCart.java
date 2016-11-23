@@ -10,7 +10,6 @@ package comp248_a4;
  * @author Kevin
  */
 public class ShoppingCart {
-    
     private IceCreamOrder[] order;
     private int count;
     private final int MAX_ORDERS = 3;

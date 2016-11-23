@@ -33,7 +33,7 @@ public class COMP248_A4_P1 {
         //TEST1
         //drinkMenu.setTopPrompt(null);
         //drinkMenu.setBottomPrompt(null);
-        //System.out.println(drinkMenu);
+        System.out.println(drinkMenu);
         
         //PART1
         /*

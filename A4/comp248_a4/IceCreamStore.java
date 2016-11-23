@@ -18,6 +18,9 @@ public class IceCreamStore {
     double totalPrice;
     Scanner i = new Scanner(System.in);
     
+    private String[] mainMenu = {"Place an order", "Delete an order", "Price the chart", "List the chart", "Proceed to checkout", "Exit this menu"};
+    private Menu menu = new Menu(mainMenu);
+    
     public IceCreamStore(){
         cart = new ShoppingCart();
     }
@@ -76,33 +79,21 @@ public class IceCreamStore {
         }
     }
     
-    private void showMenu() {
-        System.out.println("\t(1) Place an order");
-        System.out.println("\t(2) Delete an order");
-        System.out.println("\t(3) Price the cart");
-        System.out.println("\t(4) List the cart");
-        System.out.println("\t(5) Proceed to checkout");
-        System.out.println("\t(6) Exit this menu");
-    }
-    
     public void run() {
         if (cart.isEmpty()) {
-            System.out.println("Your Shopping Cart is empty .");
-            System.out.println("You have only two options : 1 or 6");
-            showMenu();
-            System.out.print("?-> Enter an option number : ");
+            menu.setTopMessage("Your Shopping Cart is empty.");
+            menu.setTopPrompt("You have only two options : 1 or 6");
+            menu.setBottomMessage("Please enter 1 or 6");
         } else if (cart.isFull()) {
-            System.out.println("Your Shopping Cart is full with " + cart.getMAX_ORDERS() + " ice cream orders.");
-            System.out.println("Cannot place orders ! what would you like to do?");
-            showMenu();
-            System.out.println("Please select option 2, 3, 4, 5, or 6");
-            System.out.print("?-> Enter an option number : "); 
+            menu.setTopMessage("Your Shopping Cart is full with " + cart.getMAX_ORDERS() + " ice cream orders.");
+            menu.setTopPrompt("Cannot place orders ! what would you like to do?");
+            menu.setBottomMessage("Please select option 2, 3, 4, 5, or 6");
         } else {
-            System.out.println("Your shopping cart contains " + cart.getCount() + " ice cream order(s)");
-            System.out.println("What would you like to do?");
-            showMenu();
-            System.out.print("?-> Enter an option number : ");
+            menu.setTopMessage("Your shopping cart contains " + cart.getCount() + " ice cream order(s)");
+            menu.setTopPrompt("What would you like to do?");
+            menu.setBottomMessage(null);
         }
+        System.out.print(menu);
         selection = i.nextInt();
         
         switch (selection) {
@@ -144,7 +135,6 @@ public class IceCreamStore {
                 System.exit(0);
                 break;
             default:
-                System.out.println("");
                 run();
                 break;
         }
