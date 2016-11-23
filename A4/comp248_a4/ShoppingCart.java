@@ -13,14 +13,15 @@ public class ShoppingCart {
     
     private IceCreamOrder[] order;
     private int count;
+    private final int MAX_ORDERS = 3;
     
     public ShoppingCart() {
-        this.order = new IceCreamOrder[5];
+        this.order = new IceCreamOrder[MAX_ORDERS];
         this.count = 0;
     }
     
     public void add(IceCreamOrder order) {
-        if (count < 5) {
+        if (count < MAX_ORDERS) {
             this.order[count] = order;
             count++;
         } else {
@@ -33,7 +34,7 @@ public class ShoppingCart {
         if (position < count) {
             this.order[position] = null;
             count--;
-            for (int i = position; i < 4; i++) {
+            for (int i = position; i < (MAX_ORDERS - 1); i++) {
                 this.order[i] = this.order[i+1];
                 this.order[i+1] = null;
             }
@@ -44,7 +45,7 @@ public class ShoppingCart {
     public String toString() {
         String s = "";
         for (int i = 0; i < count; i++) {
-            s += order[i].toString() + "\n";
+            s += "(" + (i+1) + ")" + order[i].toString() + "\n";
         }
         return s;
     }
@@ -58,7 +59,7 @@ public class ShoppingCart {
     }
     
     public boolean isFull() {
-        if (count == 5) {
+        if (count == MAX_ORDERS) {
             return true;
         } else {
             return false;
@@ -77,6 +78,18 @@ public class ShoppingCart {
             System.out.println("Position is out of range.");
             return null;
         }
+    }
+
+    public IceCreamOrder[] getOrder() {
+        return order;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getMAX_ORDERS() {
+        return MAX_ORDERS;
     }
     
 }
