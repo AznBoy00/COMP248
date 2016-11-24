@@ -103,7 +103,6 @@ public class Menu {
 
     @Override
     public String toString() {
-        
         String output = new String();
         
         output += (this.topMessage == null) ? "" : this.topMessage + "\n";

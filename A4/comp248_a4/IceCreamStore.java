@@ -12,7 +12,6 @@ import java.util.Scanner;
  * @author Kevin
  */
 public class IceCreamStore {
-    //private IceCreamOrder order;
     private ShoppingCart cart;
     private int selection;
     double totalPrice;
@@ -20,6 +19,14 @@ public class IceCreamStore {
     
     private String[] mainMenu = {"Place an order", "Delete an order", "Price the chart", "List the chart", "Proceed to checkout", "Exit this menu"};
     private Menu menu = new Menu(mainMenu);
+
+    private String[] generateCartList() {
+        String[] cartList = new String[cart.getCount()];
+        for (int j = 0; j < cart.getCount(); j++) {
+            cartList[j] = cart.get(j+1).toString();
+        }
+        return cartList;
+    }
     
     public IceCreamStore(){
         cart = new ShoppingCart();
@@ -30,21 +37,23 @@ public class IceCreamStore {
         cart.add(order);
     }
     
-    public void deleteOrder(){        
-        System.out.println("\nYou have selected to remove an order from your cart");
-        System.out.println("What would you like to do?");
-        System.out.println(cart.toString());
-        System.out.println("\t("+ (cart.getCount()+1) +") Exit this menu");
-        System.out.print("?-> Enter an option number : ");
+    public void deleteOrder(){
+        String[] cartList = generateCartList();
+        Menu deleteMenu = new Menu(cartList);
+        
+        deleteMenu.setTopMessage("\nYou have selected to remove an order from your cart");
+        deleteMenu.setTopPrompt("What would you like to do?");
+        deleteMenu.setBottomMessage("\t("+ (cart.getCount()+1) +") Exit this menu");
+        System.out.print(deleteMenu);
         selection = i.nextInt();
         
         if (selection <= (cart.getCount())) {
             cart.remove(selection);
             System.out.println("\nThe order you selected was deleted\n");
-        } else if (selection == 4) {
+        } else if (selection == (cart.getCount()+1)) {
             System.out.println("");
         } else {
-            System.out.println("\nAn error has occured\n.");
+            System.out.println("\nAn error has occured, please try again.\n");
         }       
     }
     
@@ -63,7 +72,7 @@ public class IceCreamStore {
         System.out.println("\n------------------------------------=\n");
     }
     
-    public void reviewOrders() {
+    public void reviewOrders() {//TODO
         System.out.println("\nYour current selections of our scrumptious ice creams");
         System.out.print("-----------------------------------------------------");
         System.out.print(cart.toString());
@@ -74,9 +83,10 @@ public class IceCreamStore {
         reviewOrders();
         printTotalPrice();
         //Empty Cart
-        for (int j = 0; j < cart.getCount(); j++) {
+        /*for (int j = 0; j < cart.getCount(); j++) {
             cart.remove(j+1);
-        }
+        }*/
+        this.cart = new ShoppingCart();
     }
     
     public void run() {
@@ -89,7 +99,11 @@ public class IceCreamStore {
             menu.setTopPrompt("Cannot place orders ! what would you like to do?");
             menu.setBottomMessage("Please select option 2, 3, 4, 5, or 6");
         } else {
-            menu.setTopMessage("Your shopping cart contains " + cart.getCount() + " ice cream order(s)");
+            if (cart.getCount() == 1) {
+                menu.setTopMessage("Your shopping cart contains " + cart.getCount() + " ice cream order");
+            } else {
+                menu.setTopMessage("Your shopping cart contains " + cart.getCount() + " ice cream orders");
+            }
             menu.setTopPrompt("What would you like to do?");
             menu.setBottomMessage(null);
         }
@@ -133,7 +147,6 @@ public class IceCreamStore {
             case 6:
                 System.out.println("\nCheers!");
                 System.exit(0);
-                break;
             default:
                 run();
                 break;

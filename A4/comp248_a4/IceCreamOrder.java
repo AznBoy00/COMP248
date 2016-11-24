@@ -104,7 +104,7 @@ public class IceCreamOrder {
                 break;
         }
 
-        vesselMenu.setBottomMessage("\nStep B: Select a vessel for your ice cream :");
+        vesselMenu.setTopPrompt("\nStep B: Select a vessel for your ice cream :");
         do {
             System.out.print(vesselMenu);
             selection = i.nextInt();
@@ -125,7 +125,7 @@ public class IceCreamOrder {
                 break;
         }
         
-        scoopMenu.setTopMessage("\nStep C: How much ice cream ?");
+        scoopMenu.setTopPrompt("\nStep C: How much ice cream ?");
         do {
             System.out.print(scoopMenu);
             selection = i.nextInt();
@@ -146,7 +146,7 @@ public class IceCreamOrder {
                 break;
         }
         
-        quantityMenu.setTopMessage("\nStep D: how many orders of your current selection ?");
+        quantityMenu.setTopPrompt("\nStep D: how many orders of your current selection ?");
         do {
             System.out.print(quantityMenu);
             selection = i.nextInt();
@@ -192,7 +192,7 @@ public class IceCreamOrder {
 
     @Override
     public String toString() {
-        return " " + quantity + " orders of " + amount + " of " + flavor + " ice cream in a " + vessel + " for $" + price() + " = " + quantity + " x " + unitPrice;       
+        return quantity + " orders of " + amount + " of " + flavor + " ice cream in a " + vessel + " for $" + price() + " = " + quantity + " x " + unitPrice;       
     }
 
     public String getFlavor() {
