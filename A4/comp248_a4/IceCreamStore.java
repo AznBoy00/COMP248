@@ -1,11 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//------------------------------------
+// Assignment 4
+// Written by: Kevin Lin - 4002383
+// For COMP 248 Section Q - Fall 2016   
+//------------------------------------
+
 package comp248_a4;
 
-import java.util.Scanner;
 
 /**
  *
@@ -15,16 +15,16 @@ public class IceCreamStore {
     private ShoppingCart cart;
     private int selection;
     double totalPrice;
-    Scanner i = new Scanner(System.in);
     
     private String[] mainMenu = {"Place an order", "Delete an order", "Price the chart", "List the chart", "Proceed to checkout", "Exit this menu"};
     private Menu menu = new Menu(mainMenu);
 
-    private String[] generateCartList() {
-        String[] cartList = new String[cart.getCount()];
+    private String[] generateCartListWithExit() {
+        String[] cartList = new String[cart.getCount()+1];
         for (int j = 0; j < cart.getCount(); j++) {
             cartList[j] = cart.get(j+1).toString();
         }
+        cartList[cartList.length-1] = "Exit this menu";
         return cartList;
     }
     
@@ -38,23 +38,25 @@ public class IceCreamStore {
     }
     
     public void deleteOrder(){
-        String[] cartList = generateCartList();
-        Menu deleteMenu = new Menu(cartList);
+        String[] menuOptions = generateCartListWithExit();
+        
+        
+        Menu deleteMenu = new Menu(menuOptions);
         
         deleteMenu.setTopMessage("\nYou have selected to remove an order from your cart");
         deleteMenu.setTopPrompt("What would you like to do?");
-        deleteMenu.setBottomMessage("\t("+ (cart.getCount()+1) +") Exit this menu");
-        System.out.print(deleteMenu);
-        selection = i.nextInt();
         
-        if (selection <= (cart.getCount())) {
-            cart.remove(selection);
-            System.out.println("\nThe order you selected was deleted\n");
-        } else if (selection == (cart.getCount()+1)) {
-            System.out.println("");
-        } else {
-            System.out.println("\nAn error has occured, please try again.\n");
-        }       
+        do {
+            selection = deleteMenu.getOptionNumber();
+            if (selection == (cart.getCount()+1)) {
+                System.out.println("");
+            } else if (selection <= (cart.getCount()) && selection > 0) {
+                cart.remove(selection);
+                System.out.print("\nThe order you selected was deleted\n");
+            } else {
+                System.out.print("\nAn error has occured, please try again.\n"); 
+            }
+        } while (selection <= 0 && selection > (cart.getCount()+1));
     }
     
     public double computeTotalPrice() {
@@ -69,14 +71,14 @@ public class IceCreamStore {
         computeTotalPrice();
         System.out.println("------------------------------------=");
         System.out.printf("Total price of all your orders in the cart : $%.2f", totalPrice);
-        System.out.println("\n------------------------------------=\n");
+        System.out.println("\n------------------------------------=");
     }
     
     public void reviewOrders() {//TODO
         System.out.println("\nYour current selections of our scrumptious ice creams");
         System.out.print("-----------------------------------------------------");
         System.out.print(cart.toString());
-        System.out.print("\n-----------------------------------------------------\n");
+        System.out.println("\n-----------------------------------------------------");
     }
     
     public void checkout() {
@@ -107,8 +109,7 @@ public class IceCreamStore {
             menu.setTopPrompt("What would you like to do?");
             menu.setBottomMessage(null);
         }
-        System.out.print(menu);
-        selection = i.nextInt();
+        selection = menu.getOptionNumber();
         
         switch (selection) {
             case 1:
@@ -128,26 +129,32 @@ public class IceCreamStore {
                 if (!cart.isEmpty()) {
                     System.out.println("");
                     printTotalPrice();
+                    System.out.println("");
+                    run();
+                } else {
+                    System.out.println("");
+                    run();
                 }
-                run();
                 break;
             case 4:
                 if (!cart.isEmpty()) {
                     reviewOrders();
-                    System.out.println("");
                 }
+                System.out.println("");
                 run();
                 break;
             case 5:
                 if (!cart.isEmpty()) {
                     checkout();
                 }
+                System.out.println("");
                 run();
                 break;
             case 6:
                 System.out.println("\nCheers!");
                 System.exit(0);
             default:
+                System.out.println("");
                 run();
                 break;
         }

@@ -1,11 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package comp248_a4;
+//------------------------------------
+// Assignment 4
+// Written by: Kevin Lin - 4002383
+// For COMP 248 Section Q - Fall 2016   
+//------------------------------------
 
-import java.util.Scanner;
+package comp248_a4;
 
 /**
  *
@@ -40,7 +39,6 @@ public class IceCreamOrder {
     private String[] quantityName = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
     
     //Constructor Initialization
-    Scanner i = new Scanner(System.in);
     private Menu flavorMenu = new Menu(flavorName);
     private Menu vesselMenu = new Menu(vesselName);
     private Menu scoopMenu = new Menu(scoopAmount);
@@ -70,8 +68,7 @@ public class IceCreamOrder {
         flavorMenu.setTopMessage("\nPlacing an order is as easy as ABC, and D.");
         flavorMenu.setTopPrompt("Step A: Select your favorite flavour");
         do {
-            System.out.print(flavorMenu);
-            selection = i.nextInt();
+            selection = flavorMenu.getOptionNumber();
         } while (selection <1 || selection > 9);
         
         switch (selection) {
@@ -106,8 +103,7 @@ public class IceCreamOrder {
 
         vesselMenu.setTopPrompt("\nStep B: Select a vessel for your ice cream :");
         do {
-            System.out.print(vesselMenu);
-            selection = i.nextInt();
+            selection = vesselMenu.getOptionNumber();
         } while (selection <1 || selection > 3);
         
         switch (selection) {
@@ -127,8 +123,7 @@ public class IceCreamOrder {
         
         scoopMenu.setTopPrompt("\nStep C: How much ice cream ?");
         do {
-            System.out.print(scoopMenu);
-            selection = i.nextInt();
+            selection = scoopMenu.getOptionNumber();
         } while (selection <1 || selection > 3);
         
         switch(selection) {
@@ -148,8 +143,7 @@ public class IceCreamOrder {
         
         quantityMenu.setTopPrompt("\nStep D: how many orders of your current selection ?");
         do {
-            System.out.print(quantityMenu);
-            selection = i.nextInt();
+            selection = quantityMenu.getOptionNumber();
         } while (selection <1 || selection > 10);
         
         switch (selection) {
