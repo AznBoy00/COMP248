@@ -6,8 +6,10 @@
 
 package comp248_a4;
 
-/*
-    This is the main static void which runs the ice cream store's program.
+/**
+ * Main class which runs the ice cream store program.
+ * 
+ * @author Kevin
  */
 public class IceCreamStoreOnline {
     
