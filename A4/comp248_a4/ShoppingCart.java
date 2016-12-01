@@ -7,19 +7,24 @@
 package comp248_a4;
 
 /**
- *
+ * ShoppingCart class is responsible to manage the shopping cart from the ice cream store.
  * @author Kevin
  */
 public class ShoppingCart {
     private IceCreamOrder[] order;
     private int count;
     private final int MAX_ORDERS = 3;
-    
+    /**
+     * Default constructor which sets the number or orders to 0
+     */
     public ShoppingCart() {
         this.order = new IceCreamOrder[MAX_ORDERS];
         this.count = 0;
     }
-    
+    /**
+     * Adds the order to the array order
+     * @param order (user input)
+     */
     public void add(IceCreamOrder order) {
         if (count < MAX_ORDERS) {
             this.order[count] = order;
@@ -28,7 +33,10 @@ public class ShoppingCart {
             System.out.println("Your shopping cart is full. Could not add item.");
         }
     }
-    
+    /**
+     * Removes the order specified from the array of order
+     * @param position (user's input)
+     */
     public void remove(int position) {
         position -= 1;
         if (position < count) {
@@ -40,7 +48,10 @@ public class ShoppingCart {
             }
         }
     }
-
+    /**
+     * 
+     * @return the shopping cart in a list from the array of order
+     */
     @Override
     public String toString() {
         String s = "";
@@ -49,7 +60,10 @@ public class ShoppingCart {
         }
         return s;
     }
-    
+    /**
+     * 
+     * @return a boolean showing whether the cart is empty or not
+     */
     public boolean isEmpty() {
         if (count == 0) {
             return true;
@@ -57,7 +71,10 @@ public class ShoppingCart {
             return false;
         }
     }
-    
+    /**
+     * 
+     * @return a boolean showing that whether the cart is full or not
+     */
     public boolean isFull() {
         if (count == MAX_ORDERS) {
             return true;
@@ -65,11 +82,18 @@ public class ShoppingCart {
             return false;
         }
     }
-    
-    public int size() {
+    /**
+     * 
+     * @return an integer representing the number of articles in the cart
+     */
+    public int getCount() {
         return count;
     }
-    
+    /**
+     * 
+     * @param position (user's position input)
+     * @return the position of an object inside the array of cart orders
+     */
     public IceCreamOrder get(int position) {
         if (position <= count) {
             position -= 1;
@@ -79,15 +103,17 @@ public class ShoppingCart {
             return null;
         }
     }
-
+    /**
+     * 
+     * @return the object inside the order array
+     */
     public IceCreamOrder[] getOrder() {
         return order;
     }
-
-    public int getCount() {
-        return count;
-    }
-
+    /**
+     * 
+     * @return an integer representing the number of maximum orders a user can order.
+     */
     public int getMAX_ORDERS() {
         return MAX_ORDERS;
     }
